@@ -1,0 +1,5 @@
+	# Shared signal fallback profile.
+	# Frkn64 Modding
+
+	scaling_start_distance: 24
+	scaling_end_distance: 160

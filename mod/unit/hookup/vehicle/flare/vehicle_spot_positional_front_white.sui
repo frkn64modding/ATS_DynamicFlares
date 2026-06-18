@@ -1,0 +1,12 @@
+	# Simulating positional front - ECE R7
+
+	type: spot
+	setup: candela_hue_saturation
+	diffuse_color: (10, 0, 0)
+	specular_color: (10, 0, 0)
+	range: 4
+	forward_distance: false
+	inner_angle: 5
+	outer_angle: 125
+	fade_distance: 20
+	fade_span: 20

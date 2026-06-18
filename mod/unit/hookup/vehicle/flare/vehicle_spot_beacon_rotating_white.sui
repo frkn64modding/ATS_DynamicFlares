@@ -1,0 +1,12 @@
+	# Simulating beacon rotating white - ECE R65
+
+	type: spot
+	setup: candela_hue_saturation
+	diffuse_color: (230, 0, 0)
+	specular_color: (230, 0, 0)
+	range: 25
+	forward_distance: false
+	inner_angle: 5
+	outer_angle: 60
+	fade_distance: 100
+	fade_span: 50

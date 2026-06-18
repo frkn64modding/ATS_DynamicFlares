@@ -1,0 +1,5 @@
+	# Beam and reverse lamps should remain readable farther away,
+	# but without turning into oversized floating discs.
+
+	scaling_start_distance: 0
+	scaling_end_distance: 120

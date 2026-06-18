@@ -1,0 +1,20 @@
+SiiNunit
+{
+flare_vehicle: flare.vehicle.reverse_ledl
+{
+	dir_type: narrow
+	flare_inner_angle: 45
+	light_type: reverse
+
+@include "vehicle_spot_reverse_white.sui"
+
+	model: "/model/flare/uniform_cold_white.pmd"
+	default_scale: 0.05
+	scale_factor: 18
+	visual_offset: 0.12
+
+@include "vehicle_lights_scaling_distance_beam.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+}

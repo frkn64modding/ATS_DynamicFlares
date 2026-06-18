@@ -1,0 +1,5 @@
+	# Simulating realistic flare scale
+	# Frkn64 Modding
+
+	default_scale: 0.06
+	scale_factor: 10

@@ -1,0 +1,13 @@
+	# Simulating beacon flashing orange - ECE R65
+	# Frkn64 Modding
+
+	type: spot
+	setup: candela_hue_saturation
+	diffuse_color: (25, 38, 100)
+	specular_color: (25, 38, 100)
+	range: 8
+	forward_distance: false
+	inner_angle: 5
+	outer_angle: 90
+	fade_distance: 140
+	fade_span: 30

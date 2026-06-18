@@ -1,0 +1,19 @@
+SiiNunit
+{
+flare_vehicle: flare.vehicle.lblink_lednl
+{
+	dir_type: wide
+	light_type: left_blinker
+
+	range: 0.0  # disable light source
+
+	model: "/model/flare/uniform_orange.pmd"
+	default_scale: 0.02
+	scale_factor: 24
+	visual_offset: 0.075
+
+@include "vehicle_lights_scaling_distance_signal.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+}

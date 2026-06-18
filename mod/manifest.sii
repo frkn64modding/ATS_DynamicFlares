@@ -1,0 +1,21 @@
+SiiNunit
+{
+mod_package : .manifest {
+
+	display_name: "Dynamic Flares"
+
+	package_version: "1.0"
+
+	author: "Frkn64"
+
+	category[]: "graphics"
+
+	icon: "mod_image.jpg"
+
+	description_file: "mod_info.txt"
+	
+	mp_mod_optional: true
+	
+	compatible_versions[]: "1.60.*"
+}
+}

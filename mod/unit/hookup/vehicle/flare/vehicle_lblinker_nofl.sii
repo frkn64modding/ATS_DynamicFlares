@@ -1,0 +1,12 @@
+SiiNunit
+{
+flare_vehicle: flare.vehicle.lblinkernofl
+{
+	dir_type: wide
+	light_type: left_blinker
+
+@include "vehicle_spot_blinker_orange.sui"
+
+@include "vehicle_bulb_type_incandescent.sui"
+}
+}

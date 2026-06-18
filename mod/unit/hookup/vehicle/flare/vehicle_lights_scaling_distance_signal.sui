@@ -1,0 +1,5 @@
+	# Brake and turn signals should remain legible at distance,
+	# but not as aggressively as headlamps or beacons.
+
+	scaling_start_distance: 24
+	scaling_end_distance: 160

@@ -1,0 +1,12 @@
+	# Simulating 3rd brake - ECE R7
+
+	type: spot
+	setup: candela_hue_saturation
+	diffuse_color: (25, 0, 100)
+	specular_color: (25, 0, 100)
+	range: 7
+	forward_distance: false
+	inner_angle: 5
+	outer_angle: 20
+	fade_distance: 100
+	fade_span: 50

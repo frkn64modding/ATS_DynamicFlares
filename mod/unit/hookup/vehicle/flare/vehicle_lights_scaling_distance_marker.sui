@@ -1,0 +1,4 @@
+	# Marker and outline lamps should fall off sooner than signals.
+
+	scaling_start_distance: 0
+	scaling_end_distance: 120

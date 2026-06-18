@@ -1,0 +1,18 @@
+SiiNunit
+{
+flare_vehicle: flare.vehicle.revrse_nolgh
+{
+	dir_type: narrow
+	flare_inner_angle: 45
+	light_type: reverse
+
+	range: 0.0  # disable light source
+
+	model: "/model/flare/uniform_cold_white.pmd"
+	default_scale: 0.05
+	scale_factor: 18
+@include "vehicle_lights_scaling_distance_beam.sui"
+
+@include "vehicle_bulb_type_incandescent.sui"
+}
+}

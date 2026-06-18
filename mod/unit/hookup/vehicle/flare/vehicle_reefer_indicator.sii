@@ -1,0 +1,18 @@
+SiiNunit
+{
+light_source : flare.vehicle.reefer_green
+{
+	dir_type: wide
+	always_on: true
+
+@include "vehicle_spot_end_outline_front_green.sui"
+
+	model: "/model/flare/uniform_green.pmd"
+
+@include "vehicle_spot_side_marker_scale.sui"
+
+@include "vehicle_lights_scaling_distance_marker.sui"
+
+@include "vehicle_bulb_type_incandescent.sui"
+}
+}

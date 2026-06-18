@@ -1,0 +1,12 @@
+SiiNunit
+{
+flare_vehicle: flare.vehicle.rearl_nofl
+{
+	dir_type: wide
+	light_type: parking
+
+@include "vehicle_spot_positional_rear_red.sui"
+
+@include "vehicle_bulb_type_incandescent.sui"
+}
+}

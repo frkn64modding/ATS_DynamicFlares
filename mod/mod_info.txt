@@ -1,0 +1,29 @@
+[green]ATS - Dynamic Flares Mod
+
+[white]A modern lighting enhancement for American Truck Simulator that replaces outdated static flare effects with realistic dynamic flares, creating a more natural and immersive nighttime driving experience.
+
+[orange]Key Features
+[white]- Realistic bloom-based dynamic flares
+- Enhanced light reflections with improved color and density
+- Flare appearance adapts to the color and shape of each light source
+- Smooth transition between dynamic and distant flares
+- Improved headlight, taillight, beacon and auxiliary light appearance
+- Applies to player vehicles, AI traffic, and various in-game objects
+
+Unlike Realistic Vehicle Lights, which relies on traditional static flare textures similar to the base game, Dynamic Flares replaces nearby flare effects with dynamic bloom that adapts to the actual color and shape of each light source.
+
+As lights become more distant, the mod smoothly transitions back to flare textures to maintain long-distance visibility without sacrificing realism up close.
+
+The result is a cleaner, more modern lighting system that delivers a more realistic and immersive driving experience throughout the world.
+
+[orange]Load Order
+[white]Place Dynamic Flares above any flare, lighting or graphics mod in the Mod Manager for best results.
+
+[red]Terms of Use
+[white]Exclusive to Patreon supporters. Do not re-upload or redistribute.
+Unauthorized sharing may result in a copyright claim and Patreon subscription cancellation.
+
+[blue]Frkn64 Modding
+The best way to enjoy games
+www.frkn64modding.com
+modsy.io/users/frkn64

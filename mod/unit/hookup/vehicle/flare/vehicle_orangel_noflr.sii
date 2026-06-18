@@ -1,0 +1,12 @@
+SiiNunit
+{
+flare_vehicle: flare.vehicle.orangelnoflr
+{
+	dir_type: wide
+	light_type: parking
+
+@include "vehicle_spot_side_marker_orange.sui"
+
+@include "vehicle_bulb_type_incandescent.sui"
+}
+}

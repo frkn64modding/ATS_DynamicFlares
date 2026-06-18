@@ -1,0 +1,18 @@
+SiiNunit
+{
+flare_vehicle: flare.vehicle.orangeledl
+{
+	dir_type: wide
+	light_type: parking
+
+@include "vehicle_spot_side_marker_orange.sui"
+
+	model: "/model/flare/uniform_orange.pmd"
+	
+@include "vehicle_spot_side_marker_scale.sui"
+
+@include "vehicle_lights_scaling_distance_marker.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+}

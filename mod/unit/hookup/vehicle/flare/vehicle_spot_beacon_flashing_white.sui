@@ -1,0 +1,12 @@
+	# Simulating white flashing beacon - ECE R77
+
+	type: spot
+	setup: candela_hue_saturation
+	diffuse_color: (400, 0, 0)
+	specular_color: (400, 0, 0)
+	range: 35
+	forward_distance: false
+	inner_angle: 5
+	outer_angle: 90
+	fade_distance: 100
+	fade_span: 50

@@ -1,0 +1,30 @@
+SiiNunit
+{
+flare_vehicle: flare.vehicle.headl
+{
+	dir_type: narrow
+	flare_inner_angle: 7
+	light_type: low_beam
+	model: "/model/flare/uniform_white_amplified.pmd"
+
+@include "vehicle_bulb_type_incandescent.sui"
+
+	# Frkn64 Modding 
+	# Realistic Vehicle Lights Mod
+	
+	type: spot
+	inner_angle: 24.0
+	outer_angle: 58.0
+	range: 18.0
+	forward_distance: false
+	pitch_offset: 4
+	setup: candela_hue_saturation
+	diffuse_color: (135, 0, 0)
+	specular_color: (300, 0, 0)
+	ambient_color: (0.02, 0, 0)
+	default_scale: 0.08
+	scale_factor: 36
+	
+@include "vehicle_lights_scaling_distance_beam.sui"
+}
+}

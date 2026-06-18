@@ -1,0 +1,12 @@
+	# Simulating positional rear - ECE R7
+
+	type: spot
+	setup: candela_hue_saturation
+	diffuse_color: (5, 0, 100)
+	specular_color: (5, 0, 100)
+	range: 3
+	forward_distance: false
+	inner_angle: 5
+	outer_angle: 125
+	fade_distance: 20
+	fade_span: 20

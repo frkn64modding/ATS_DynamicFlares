@@ -1,0 +1,12 @@
+	# Simulating beacon flashing blue - ECE R65
+
+	type: spot
+	setup: candela_hue_saturation
+	diffuse_color: (200, 233, 72)
+	specular_color: (200, 233, 72)
+	range: 25
+	forward_distance: false
+	inner_angle: 5
+	outer_angle: 90
+	fade_distance: 150
+	fade_span: 30

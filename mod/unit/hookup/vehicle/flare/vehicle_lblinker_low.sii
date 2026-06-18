@@ -1,0 +1,17 @@
+SiiNunit
+{
+flare_vehicle: flare.vehicle.lblinkerlow
+{
+	dir_type: wide
+	light_type: left_blinker
+
+@include "vehicle_spot_blinker_orange.sui"
+
+	model: "/model/flare/uniform_orange_low.pmd"
+	default_scale: 0.03
+	scale_factor: 22
+@include "vehicle_lights_scaling_distance_signal.sui"
+
+@include "vehicle_bulb_type_incandescent.sui"
+}
+}
