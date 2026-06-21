@@ -1,5 +1,5 @@
 import { app, BrowserWindow, dialog, ipcMain, shell } from "electron";
-import { join, resolve } from "node:path";
+import { basename, join, resolve } from "node:path";
 import { ConfigManager } from "./services/configManager";
 import { LicenseService } from "./services/licenseService";
 import { ModInstaller } from "./services/modInstaller";
@@ -19,6 +19,12 @@ const RECOMMENDED_SETTINGS: VisualSettings = {
 };
 const MOD_ARCHIVE_FILENAME = "ats_dynamic_flares.scs";
 const ATS_LAUNCH_URL = "steam://rungameid/270880";
+const GAME_SETTINGS_NOT_FOUND_ERROR =
+  "The selected folder doesn't seem to be the American Truck Simulator mod folder.\n\n" +
+  "Please select the mod folder inside the American Truck Simulator folder and try again.";
+const GAME_CONFIG_NOT_FOUND_ERROR =
+  "American Truck Simulator configuration file couldn't be found in the selected folder.\n\n" +
+  "Please make sure the game has been launched at least once.";
 const SUBSCRIPTION_PAGE_URL =
   "https://modsy.io/american-truck-simulator/mods/dynamic-flares";
 
@@ -67,11 +73,20 @@ function sanitizeSettings(input: VisualSettings): VisualSettings {
   };
 }
 
+function getGameSettingsNotFoundError(modFolder: string): string {
+  return basename(modFolder).toLowerCase() === "mod"
+    ? GAME_CONFIG_NOT_FOUND_ERROR
+    : GAME_SETTINGS_NOT_FOUND_ERROR;
+}
+
 async function buildAppState(): Promise<AppState> {
   const storedSettings = await settingsStorage.load();
   const paths = pathDetectionService.getDefaultPaths();
   const bundledModVersion = app.getVersion();
   const modFolder = await pathDetectionService.resolvePreferredModFolder(storedSettings.selectedModFolder);
+  const gameDirectory = modFolder
+    ? pathDetectionService.resolveGameDirectory(modFolder)
+    : paths.gameDirectory;
   const license = await licenseService.checkLicenseStatus();
   let installationState: AppState["installationState"] = (await modInstaller.isInstalled(modFolder))
     ? "installed"
@@ -81,7 +96,7 @@ async function buildAppState(): Promise<AppState> {
     try {
       await modInstaller.uninstallForEntitlementLoss(
         modFolder,
-        await configManager.hasConfig(paths.gameDirectory) ? paths.gameDirectory : null
+        await configManager.hasConfig(gameDirectory) ? gameDirectory : null
       );
       installationState = (await modInstaller.isInstalled(modFolder)) ? "installed" : "not-installed";
     } catch {
@@ -89,7 +104,7 @@ async function buildAppState(): Promise<AppState> {
     }
   }
 
-  const rawConfigValues = await configManager.readCurrentValues(paths.gameDirectory);
+  const rawConfigValues = await configManager.readCurrentValues(gameDirectory);
   const hasGameSettings = rawConfigValues !== null;
   let installationAction: InstallationAction = "install";
 
@@ -125,7 +140,7 @@ async function buildAppState(): Promise<AppState> {
 
   return {
     modFolder,
-    gameDirectory: hasGameSettings ? paths.gameDirectory : null,
+    gameDirectory: hasGameSettings ? gameDirectory : null,
     modFilePath: modFolder ? join(modFolder, MOD_ARCHIVE_FILENAME) : null,
     hasGameSettings,
     installationState,
@@ -243,9 +258,7 @@ async function ensureReady(): Promise<void> {
     }
 
     if (!state.gameDirectory || !state.hasGameSettings) {
-      throw new Error(
-        "American Truck Simulator settings could not be found.\n\nPlease make sure the game has been launched at least once."
-      );
+      throw new Error(getGameSettingsNotFoundError(state.modFolder));
     }
 
     if (!(await licenseService.isLicenseValid())) {
@@ -279,9 +292,7 @@ async function ensureReady(): Promise<void> {
     }
 
     if (!state.gameDirectory || !state.hasGameSettings) {
-      throw new Error(
-        "American Truck Simulator settings could not be found.\n\nPlease make sure the game has been launched at least once."
-      );
+      throw new Error(getGameSettingsNotFoundError(state.modFolder));
     }
 
     try {

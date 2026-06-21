@@ -1,14 +1,8 @@
 SiiNunit
 {
-
-##########################
-#
-#  Players beacons
-#
-##########################
-
-beacon_vehicle: flare.vehicle.beacon
+beacon_vehicle: flare.vehicle.beacon	#use only for truck! fake_interior_offset: 1.0
 {
+    fake_interior_offset: 1.0
 	rot_speed: 720
 	dir_type: wide
 	light_type: beacon
@@ -19,13 +13,12 @@ beacon_vehicle: flare.vehicle.beacon
 	model: "/model/flare/uniform_orange_amplified.pmd"
 @include "vehicle_spot_beacon_scale_small.sui"
 
-	fake_interior_offset: 1.5
-
 @include "vehicle_bulb_type_incandescent.sui"
 }
 
-flare_blink: flare_only.vehicle.beacon.blink_l
+flare_blink: flare_only.vehicle.beacon.blink_l	# use only for truck together with light_only.*
 {
+	fake_interior_offset: 0.0	# since it's flare only we don't need offset
 	dir_type: wide
 
 	light_type: beacon
@@ -33,16 +26,17 @@ flare_blink: flare_only.vehicle.beacon.blink_l
 	blink_pattern: "X-X-------"
 	blink_step_length: 0.09
 
+	range: 0.0  # disable light source
+
 	model: "/model/flare/uniform_orange_amplified.pmd"
 @include "vehicle_spot_beacon_scale_small.sui"
-
-	fake_interior_offset: 1.5
 
 @include "vehicle_bulb_type_led.sui"
 }
 
-flare_blink: light_only.vehicle.beacon.blink_l
+flare_blink: light_only.vehicle.beacon.blink_l	# use only for truck together with flare_only.*
 {
+	fake_interior_offset: 1.5
 	light_type: beacon
 
 	blink_pattern: "X-X-------"
@@ -51,66 +45,38 @@ flare_blink: light_only.vehicle.beacon.blink_l
 @include "vehicle_spot_beacon_flashing_orange.sui"
 	pitch_offset: 12
 
-	fake_interior_offset: 1.5
-
 @include "vehicle_bulb_type_led.sui"
 }
 
-flare_blink: flare_only.vehicle.beacon.blink_r
+flare_blink: flare_only.vehicle.beacon.blink_r	# use only for truck together with light_only.*
 {
+	fake_interior_offset: 0.0	# since it's flare only we don't need offset
 	dir_type: wide
-
 	light_type: beacon
 
 	blink_pattern: "----X-X---"
 	blink_step_length: 0.09
 
+	range: 0.0  # disable light source
+
 	model: "/model/flare/uniform_orange_amplified.pmd"
 @include "vehicle_spot_beacon_scale_small.sui"
-
-	fake_interior_offset: 1.5
 
 @include "vehicle_bulb_type_led.sui"
 }
 
-flare_blink: light_only.vehicle.beacon.blink_r
+flare_blink: light_only.vehicle.beacon.blink_r	# use only for truck together with flare_only.*
 {
+	fake_interior_offset: 1.5
 	light_type: beacon
 
 	blink_pattern: "----X-X---"
 	blink_step_length: 0.09
 
 @include "vehicle_spot_beacon_flashing_orange.sui"
-	pitch_offset: 12
-
-	fake_interior_offset: 1.5
 
 @include "vehicle_bulb_type_led.sui"
 }
-
-flare_blink: flare.vehicle.beacon_addon.blink
-{
-	dir_type: wide
-
-	light_type: beacon
-
-	blink_pattern: "X-X-X--------X-X-X--------X-X-X--------XXXXX----------XXXXX----------"
-	blink_step_length: 0.06
-
-@include "vehicle_spot_beacon_addon_flashing_orange.sui"
-
-	model: "/model/flare/uniform_orange_amplified.pmd"
-	default_scale: 0.15
-	scale_factor: 12
-
-@include "vehicle_bulb_type_led.sui"
-}
-
-##########################
-#
-#  Trailer & AI beacons
-#
-##########################
 
 beacon_vehicle: flare.trailer.beacon
 {
@@ -122,6 +88,7 @@ beacon_vehicle: flare.trailer.beacon
 
 	model: "/model/flare/uniform_orange_amplified.pmd"
 @include "vehicle_spot_beacon_scale_small.sui"
+
 @include "vehicle_bulb_type_incandescent.sui"
 }
 
@@ -146,13 +113,13 @@ beacon_vehicle: flare.vehicle.beacon_b_ai
 	light_type: beacon
 
 @include "vehicle_spot_beacon_rotating_blue.sui"
-	pitch_offset: 6
 
 	model: "/model/flare/uniform_blue_amplified.pmd"
 @include "vehicle_spot_beacon_scale_big.sui"
 
 @include "vehicle_bulb_type_incandescent.sui"
 }
+
 
 flare_blink: flare_only.vehicle.beacon_o_ai.blink_l
 {
@@ -163,20 +130,10 @@ flare_blink: flare_only.vehicle.beacon_o_ai.blink_l
 	blink_pattern: "X-X-XXX-----------"
 	blink_step_length: 0.06
 
+	range: 0.0  # disable light source
+
 	model: "/model/flare/uniform_orange_amplified.pmd"
 @include "vehicle_spot_beacon_scale_small.sui"
-
-@include "vehicle_bulb_type_led.sui"
-}
-
-flare_blink: light_only.vehicle.beacon_o_ai.blink_l
-{
-	light_type: beacon
-
-	blink_pattern: "X-X-XXX-----------"
-	blink_step_length: 0.06
-
-@include "vehicle_spot_beacon_flashing_orange.sui"
 
 @include "vehicle_bulb_type_led.sui"
 }
@@ -190,20 +147,44 @@ flare_blink: flare_only.vehicle.beacon_o_ai.blink_r
 	blink_pattern: "---------X-X-XXX--"
 	blink_step_length: 0.06
 
+	range: 0.0  # disable light source
+
 	model: "/model/flare/uniform_orange_amplified.pmd"
 @include "vehicle_spot_beacon_scale_small.sui"
 
 @include "vehicle_bulb_type_led.sui"
 }
 
-flare_blink: light_only.vehicle.beacon_o_ai.blink_r
+flare_blink: flare.vehicle.beacon_o.blink_l
 {
+	dir_type: wide
+
 	light_type: beacon
 
 	blink_pattern: "---------X-X-XXX--"
 	blink_step_length: 0.06
 
 @include "vehicle_spot_beacon_flashing_orange.sui"
+
+	model: "/model/flare/uniform_orange_amplified.pmd"
+@include "vehicle_spot_beacon_scale_small.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink: flare.vehicle.beacon_o.blink_r
+{
+	dir_type: wide
+
+	light_type: beacon
+
+	blink_pattern: "X-X-XXX-----------"
+	blink_step_length: 0.06
+
+@include "vehicle_spot_beacon_flashing_orange.sui"
+
+	model: "/model/flare/uniform_orange_amplified.pmd"
+@include "vehicle_spot_beacon_scale_small.sui"
 
 @include "vehicle_bulb_type_led.sui"
 }
@@ -221,10 +202,8 @@ beacon_vehicle: flare.vehicle.emergency.beacon_r
 	light_type: police_hooter
 
 @include "vehicle_spot_beacon_rotating_red.sui"
-	pitch_offset: 6
 
 	model: "/model/flare/uniform_red_amplified.pmd"
-	visual_offset: 0.75
 @include "vehicle_spot_beacon_scale_big.sui"
 
 @include "vehicle_bulb_type_incandescent.sui"
@@ -237,10 +216,8 @@ beacon_vehicle: flare.vehicle.emergency.beacon_b
 	light_type: police_hooter
 
 @include "vehicle_spot_beacon_rotating_blue.sui"
-	pitch_offset: 6
 
 	model: "/model/flare/uniform_blue_amplified.pmd"
-	visual_offset: 0.75
 @include "vehicle_spot_beacon_scale_big.sui"
 
 @include "vehicle_bulb_type_incandescent.sui"
@@ -253,7 +230,6 @@ beacon_vehicle: flare.vehicle.emergency.beacon_o
 	light_type: police_hooter
 
 @include "vehicle_spot_beacon_rotating_orange.sui"
-	pitch_offset: 6
 
 	model: "/model/flare/uniform_orange_amplified.pmd"
 @include "vehicle_spot_beacon_scale_small.sui"
@@ -351,6 +327,90 @@ flare_blink : light_only.vehicle.emergency.beacon_b.blink_r
 @include "vehicle_bulb_type_led.sui"
 }
 
+flare_blink : flare.vehicle.emergency.beacon_w.blink_l
+{
+	dir_type: wide
+	blink_pattern: "X-X-XXX-----------"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+@include "vehicle_spot_beacon_flashing_white.sui"
+
+	model: "/model/flare/uniform_white_amplified.pmd"
+@include "vehicle_spot_beacon_scale_big.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink : flare_only.vehicle.emergency.beacon_w.blink_l
+{
+	dir_type: wide
+	blink_pattern: "X-X-XXX-----------"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+	model: "/model/flare/uniform_white_amplified.pmd"
+@include "vehicle_spot_beacon_scale_big.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink : light_only.vehicle.emergency.beacon_w.blink_l
+{
+	blink_pattern: "X-X-XXX-----------"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+@include "vehicle_spot_beacon_flashing_white.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink : flare.vehicle.emergency.beacon_w.blink_r
+{
+	dir_type: wide
+	blink_pattern: "--------X-X-XXX---"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+@include "vehicle_spot_beacon_flashing_white.sui"
+
+	model: "/model/flare/uniform_white_amplified.pmd"
+@include "vehicle_spot_beacon_scale_big.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink : flare_only.vehicle.emergency.beacon_w.blink_r
+{
+	dir_type: wide
+	blink_pattern: "--------X-X-XXX---"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+	model: "/model/flare/uniform_white_amplified.pmd"
+@include "vehicle_spot_beacon_scale_big.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink : light_only.vehicle.emergency.beacon_w.blink_r
+{
+	blink_pattern: "--------X-X-XXX---"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+@include "vehicle_spot_beacon_flashing_white.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
 flare_blink : flare.vehicle.emergency.beacon_r.blink_l
 {
 	dir_type: wide
@@ -435,17 +495,27 @@ flare_blink : light_only.vehicle.emergency.beacon_r.blink_r
 @include "vehicle_bulb_type_led.sui"
 }
 
-##########################
-#
-# Utility blinking (aka road signalization trailers)
-#
-##########################
-
-flare_blink: flare.vehicle.emergency.beacon_o.blink_slow
+flare_blink : flare.vehicle.emergency.beacon_o.blink_l
 {
 	dir_type: wide
-	blink_pattern: "XX----"
-	blink_step_length: 0.35
+	blink_pattern: "X-X-XXX-----------"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+@include "vehicle_spot_beacon_flashing_orange.sui"
+
+	model: "/model/flare/uniform_orange_amplified.pmd"
+@include "vehicle_spot_beacon_scale_big.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink : flare_only.vehicle.emergency.beacon_o.blink_l
+{
+	dir_type: wide
+	blink_pattern: "X-X-XXX-----------"
+	blink_step_length: 0.06
 
 	light_type: police_hooter
 
@@ -455,13 +525,91 @@ flare_blink: flare.vehicle.emergency.beacon_o.blink_slow
 @include "vehicle_bulb_type_led.sui"
 }
 
+flare_blink : light_only.vehicle.emergency.beacon_o.blink_l
+{
+	blink_pattern: "X-X-XXX-----------"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+@include "vehicle_spot_beacon_flashing_orange.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink : flare.vehicle.emergency.beacon_o.blink_r
+{
+	dir_type: wide
+	blink_pattern: "--------X-X-XXX---"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+@include "vehicle_spot_beacon_flashing_orange.sui"
+
+	model: "/model/flare/uniform_orange_amplified.pmd"
+@include "vehicle_spot_beacon_scale_big.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink : flare_only.vehicle.emergency.beacon_o.blink_r
+{
+	dir_type: wide
+	blink_pattern: "--------X-X-XXX---"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+	model: "/model/flare/uniform_orange_amplified.pmd"
+@include "vehicle_spot_beacon_scale_big.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+flare_blink : light_only.vehicle.emergency.beacon_o.blink_r
+{
+	blink_pattern: "--------X-X-XXX---"
+	blink_step_length: 0.06
+
+	light_type: police_hooter
+
+@include "vehicle_spot_beacon_flashing_orange.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
+##########################
+#
+# Utility blinking (aka road signalization trailers)
+#
+##########################
+
+flare_blink: flare.vehicle.emergency.beacon_o.blink_slow
+{
+	dir_type: wide
+	blink_pattern: "X--"
+	blink_step_length: 0.5
+
+	light_type: police_hooter
+
+	range: 0.0  # disable light source
+
+	model: "/model/flare/uniform_orange_amplified.pmd"
+@include "vehicle_spot_beacon_scale_small.sui"
+
+@include "vehicle_bulb_type_led.sui"
+}
+
 flare_blink: flare.vehicle.emergency.beacon_o_big.blink_slow
 {
 	dir_type: wide
-	blink_pattern: "---XX-"
-	blink_step_length: 0.35
+	blink_pattern: "X--"
+	blink_step_length: 0.5
 
 	light_type: police_hooter
+
+	range: 0.0  # disable light source
 
 	model: "/model/flare/uniform_orange_amplified.pmd"
 @include "vehicle_spot_beacon_scale_big.sui"

@@ -2,9 +2,9 @@ SiiNunit
 {
 mod_package : .manifest {
 
-	display_name: "Dynamic Flares"
+	display_name: "Dynamic Flares for ATS"
 
-	package_version: "1.0"
+	package_version: "1.1"
 
 	author: "Frkn64"
 

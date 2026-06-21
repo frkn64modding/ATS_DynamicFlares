@@ -1,7 +1,7 @@
 import { app } from "electron";
 import { access } from "node:fs/promises";
 import { constants } from "node:fs";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 
 export type GamePaths = {
   documentsDirectory: string;
@@ -47,5 +47,9 @@ export class PathDetectionService {
     }
 
     return defaultModDirectory;
+  }
+
+  resolveGameDirectory(modFolder: string): string {
+    return dirname(resolve(modFolder));
   }
 }
