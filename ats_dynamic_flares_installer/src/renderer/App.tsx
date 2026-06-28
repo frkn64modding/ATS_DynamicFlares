@@ -7,9 +7,7 @@ const RECOMMENDED_SETTINGS: VisualSettings = {
   flareSize: 6
 };
 const APP_STATE_REFRESH_MS = 5 * 60 * 1000;
-const MODSY_CONNECTIONS_URL = "https://modsy.io/profile/edit?tab=connections";
 const MODSY_DYNAMIC_FLARES_URL = "https://modsy.io/american-truck-simulator/mods/dynamic-flares";
-const PATREON_MOD_PASS_URL = "https://www.patreon.com/c/frkn64modding";
 
 type Banner = {
   tone: "success" | "error";
@@ -150,6 +148,27 @@ function formatVersion(value: string | null | undefined): string {
   }
 
   return `v${parts.join(".")}`;
+}
+
+function formatEntitlementSource(source: string | null | undefined): string | null {
+  if (!source || source === "none") {
+    return null;
+  }
+
+  switch (source.toLowerCase()) {
+    case "patreon":
+      return "Patreon";
+    case "lemon":
+      return "Lemon Squeezy";
+    case "manual":
+      return "Manual";
+    default:
+      return source
+        .split(/[-_\s]+/)
+        .filter(Boolean)
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join(" ");
+  }
 }
 
 export function App(): JSX.Element {
@@ -296,6 +315,7 @@ export function App(): JSX.Element {
   const installedVersion = state?.settings.installedModVersion ?? null;
   const bundledVersion = state?.bundledModVersion ?? null;
   const needsSubscriptionHelp = Boolean(state?.license.authenticated && !state?.license.valid);
+  const entitlementSource = formatEntitlementSource(state?.license.source);
 
   async function syncState(nextState: AppState): Promise<void> {
     setState(nextState);
@@ -699,6 +719,9 @@ export function App(): JSX.Element {
                     <p>
                       Your subscription is verified and Dynamic Flares is ready for installation and updates.
                     </p>
+                    {entitlementSource ? (
+                      <p className="muted-inline">Access source: {entitlementSource}.</p>
+                    ) : null}
                     {state?.license.access === "grace" && state.license.graceUntil ? (
                       <p className="muted-inline">Grace period ends {formatDate(state.license.graceUntil)}.</p>
                     ) : null}
@@ -725,18 +748,10 @@ export function App(): JSX.Element {
                         <button
                           className="help-link"
                           type="button"
-                          onClick={() => void handleOpenExternalLink(MODSY_CONNECTIONS_URL)}
+                          onClick={() => void handleOpenExternalLink(MODSY_DYNAMIC_FLARES_URL)}
                         >
-                          <strong>Reconnect Patreon on Modsy</strong>
-                          <span>Check whether your Patreon account is connected correctly.</span>
-                        </button>
-                        <button
-                          className="help-link"
-                          type="button"
-                          onClick={() => void handleOpenExternalLink(PATREON_MOD_PASS_URL)}
-                        >
-                          <strong>Open Frkn64&apos;s Patreon</strong>
-                          <span>Confirm you are subscribed to the Mod Pass tier.</span>
+                          <strong>Unlock this mod on Modsy</strong>
+                          <span>Manage or start a valid subscription for Dynamic Flares.</span>
                         </button>
                       </div>
                       <div className="help-note">

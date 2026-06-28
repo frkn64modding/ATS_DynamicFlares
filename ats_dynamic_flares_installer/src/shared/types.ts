@@ -18,12 +18,14 @@ export type LicenseAccess =
   | "signed_out"
   | "error";
 
+export type LicenseSource = "patreon" | "lemon" | "manual" | "none" | (string & {});
+
 export type LicenseStatus = {
   authenticated: boolean;
   valid: boolean;
   access: LicenseAccess;
   tier: string | null;
-  source: string | null;
+  source: LicenseSource | null;
   userName: string | null;
   email: string | null;
   checkedAt: string | null;

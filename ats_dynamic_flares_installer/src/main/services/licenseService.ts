@@ -1,6 +1,6 @@
 import { app, shell } from "electron";
 import os from "node:os";
-import type { AuthChallenge, AuthPollResult, LicenseStatus } from "../../shared/types";
+import type { AuthChallenge, AuthPollResult, LicenseSource, LicenseStatus } from "../../shared/types";
 import { AuthStorage } from "./authStorage";
 
 const MODSY_BASE_URL = process.env.MODSY_API_BASE_URL ?? "https://modsy.io";
@@ -17,7 +17,7 @@ type ModsyUser = {
 type ModsyEntitlement = {
   product: string;
   access: "active" | "grace" | "expired" | "revoked" | "banned" | "no_access";
-  source?: string | null;
+  source?: LicenseSource | null;
   plan_name?: string | null;
   valid_until?: string | null;
   grace_until?: string | null;
@@ -300,7 +300,7 @@ export class LicenseService {
       case "banned":
         return "This account is currently blocked from using the tool.";
       default:
-        return "An active Patreon-backed subscription is required to use this tool.";
+        return "A valid subscription is required to use this tool.";
     }
   }
 
