@@ -1,6 +1,8 @@
 Dynamic Flares for ATS
 by Frkn64 Modding
 
+Thank you for subscribing and supporting the project!
+
 ━━━━━━━━━━━━━━━━━━━━━━━
 INSTALLATION
 ━━━━━━━━━━━━━━━━━━━━━━━
@@ -40,11 +42,11 @@ Dynamic Flares includes an installer to simplify setup and ensure all required s
 TERMS OF USE
 ━━━━━━━━━━━━━━━━━━━━━━━
 
-Exclusive to Patreon supporters.
+Exclusive to Mod Pass supporters.
+Do NOT re-upload or redistribute.
 
-Do not re-upload, redistribute, or share this mod.
-
-Unauthorized distribution may result in a copyright claim and cancellation of access to future releases.
+Unauthorized sharing may result in a copyright claim
+and Mod Pass subscription cancellation.
 
 ━━━━━━━━━━━━━━━━━━━━━━━
 OFFICIAL MOD PAGE
