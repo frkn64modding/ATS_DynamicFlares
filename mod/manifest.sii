@@ -4,7 +4,7 @@ mod_package : .manifest {
 
 	display_name: "Dynamic Flares for ATS"
 
-	package_version: "1.2"
+	package_version: "1.3"
 
 	author: "Frkn64"
 
@@ -17,5 +17,6 @@ mod_package : .manifest {
 	mp_mod_optional: true
 	
 	compatible_versions[]: "1.60.*"
+	compatible_versions[]: "1.61.*"
 }
 }
